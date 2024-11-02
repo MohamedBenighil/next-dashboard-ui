@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Menu from "../components/Menu";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +11,7 @@ export default function DashboardLayout({
     <>
       <div className="h-screen flex">
         {/* left */}
-        <div className="w-[10%] md:w-[8%] lg:w-[16%] xl:w-[14%] bg-gray-300">
+        <div className="w-[10%] md:w-[8%] lg:w-[16%] xl:w-[14%]">
           {/* logo  */}
           <Link
             href="/"
@@ -19,6 +20,7 @@ export default function DashboardLayout({
             <Image src="/logo.png" alt="logo" width={32} height={32} />
             <span className="hidden lg:block">ScooLama</span>
           </Link>
+          <Menu />
         </div>
         {/* ------------------------------------------------------------------------------- */}
         {/* right */}
