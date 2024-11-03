@@ -1,6 +1,6 @@
 "use client";
 // recharts.org > BarChart > SimpleBarChart
-import React, { PureComponent } from "react";
+import Image from "next/image";
 import {
   BarChart,
   Bar,
@@ -15,77 +15,67 @@ import {
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    name: "Mon",
+    present: 40,
+    absent: 24,
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    name: "Tue",
+    present: 30,
+    absent: 13,
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    name: "Wed",
+    present: 20,
+    absent: 50,
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    name: "Thu",
+    present: 27,
+    absent: 39,
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    name: "Fri",
+    present: 18,
+    absent: 48,
   },
 ];
 const AttendenceChart = () => {
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar
-            dataKey="pv"
-            fill="#8884d8"
-            activeBar={<Rectangle fill="pink" stroke="blue" />}
+      <div className="flex justify-between">
+        <h1 className="text-lg font-semibold">Attendence</h1>
+        <Image src="/moreDark.png" alt="" height={20} width={20} />
+      </div>
+      <ResponsiveContainer width="100%" height="80%">
+        <BarChart width={500} height={300} data={data} barSize={20}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ddd" />
+          <XAxis
+            dataKey="name"
+            axisLine={false}
+            tick={{ fill: "#d1d7db" }}
+            tickLine={false}
+          />
+          <YAxis axisLine={false} tick={{ fill: "#d1d7db" }} tickLine={false} />
+          <Tooltip
+            contentStyle={{ borderRadius: "10px", borderColor: "lightgray" }}
+          />
+          <Legend
+            align="left"
+            verticalAlign="top"
+            wrapperStyle={{ paddingBottom: "20px", paddingTop: "40px" }}
           />
           <Bar
-            dataKey="uv"
-            fill="#82ca9d"
-            activeBar={<Rectangle fill="gold" stroke="purple" />}
+            dataKey="absent"
+            fill="#c3ebfa"
+            legendType="circle"
+            radius={[10, 10, 0, 0]}
+          />
+          <Bar
+            dataKey="present"
+            fill="#fae27c"
+            legendType="circle"
+            radius={[10, 10, 0, 0]}
           />
         </BarChart>
       </ResponsiveContainer>
